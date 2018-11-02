@@ -1,8 +1,9 @@
 // roulette wheel
-var options = ["$100", "$10", "$25", "$20", "Lose", "$1000000", "Lose", "$350", "$5", "$99"];
+// 
+var restaurantOptions = ["$100", "$10", "$25", "$20", "Lose", "$1000000", "Lose", "$350", "$5", "$99"];
 
 var startAngle = 0;
-var arc = Math.PI / (options.length / 2);
+var arc = Math.PI / (restaurantOptions.length / 2);
 var spinTimeout = null;
 
 var spinArcStart = 10;
@@ -50,10 +51,9 @@ function drawRouletteWheel() {
 
     ctx.font = 'bold 12px Helvetica, Arial';
 
-    for(var i = 0; i < options.length; i++) {
+    for(var i = 0; i < restaurantOptions.length; i++) {
       var angle = startAngle + i * arc;
-      //ctx.fillStyle = colors[i];
-      ctx.fillStyle = getColor(i, options.length);
+      ctx.fillStyle = getColor(i, restaurantOptions.length);
 
       ctx.beginPath();
       ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
@@ -62,15 +62,11 @@ function drawRouletteWheel() {
       ctx.fill();
 
       ctx.save();
-      ctx.shadowOffsetX = -1;
-      ctx.shadowOffsetY = -1;
-      ctx.shadowBlur    = 0;
-      ctx.shadowColor   = "rgb(220,220,220)";
       ctx.fillStyle = "black";
       ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
                     250 + Math.sin(angle + arc / 2) * textRadius);
       ctx.rotate(angle + arc / 2 + Math.PI / 2);
-      var text = options[i];
+      var text = restaurantOptions[i];
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
     } 
@@ -90,15 +86,17 @@ function drawRouletteWheel() {
   }
 }
 
+// spin rotation time is randomized
 function spin() {
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
-  spinTimeTotal = Math.random() * 3 + 4 * 1000;
+  spinTimeTotal = Math.random() * 3 + 4 * 2000;
   rotateWheel();
 }
 
+// rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
 function rotateWheel() {
-  spinTime += 30;
+  spinTime += 40;
   if(spinTime >= spinTimeTotal) {
     stopRotateWheel();
     return;
@@ -106,9 +104,10 @@ function rotateWheel() {
   var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
   startAngle += (spinAngle * Math.PI / 180);
   drawRouletteWheel();
-  spinTimeout = setTimeout('rotateWheel()', 10);
+  spinTimeout = setTimeout('rotateWheel()', 20);
 }
 
+// Stops rotation of wheel
 function stopRotateWheel() {
   clearTimeout(spinTimeout);
   var degrees = startAngle * 180 / Math.PI + 90;
@@ -116,10 +115,11 @@ function stopRotateWheel() {
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = 'bold 30px Helvetica, Arial';
-  var text = options[index]
+  var text = restaurantOptions[index]
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
+
 
 function easeOut(t, b, c, d) {
   var ts = (t/=d)*t;
