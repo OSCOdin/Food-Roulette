@@ -51,7 +51,7 @@ $.ajax({
 
 // Initialize Firebase / Need to create a new database to store user name and data
 var config = {
-    apiKey: "AIzaSyCs3K5zwuOuS0odq89IpPLC7HnXTOcDqgI",
+    // apiKey: "AIzaSyCs3K5zwuOuS0odq89IpPLC7HnXTOcDqgI",
     authDomain: "recent-user-with-all-use-e8e76.firebaseapp.com",
     databaseURL: "https://recent-user-with-all-use-e8e76.firebaseio.com",
     projectId: "recent-user-with-all-use-e8e76",
