@@ -62,18 +62,13 @@ firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
-// Initial Values
-var name = "";
-var zip = "";
-// var cuisine = [“pizza”, “chinese”, “italian”, “mexican”, “thai”, “burgers”, “diners”, “latin”, “bbq”, “pubs”, “american”, “tradamerican”, “newamerican”, “indian”, “breakfast”, “breakfast_brunch”, “steakhouse”];
-
 // Capture Button Click
 $("#add-user").on("click", function (event) {
     event.preventDefault();
 
-    name = $("#name-input").val().trim();
-    zip = $("#zip-input").val().trim();
-    cuisine = $("#cuisine-input").val().trim();
+    var name = $("#name-input").val().trim();
+    var zip = $("#zip-input").val().trim();
+    var cuisine = $("#cuisine-input").val().trim();
 
     // Code for the push
     dataRef.ref().push({
@@ -91,6 +86,11 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val().name);
     console.log(childSnapshot.val().zip);
     console.log(childSnapshot.val().cuisine);
+
+    // Clear form
+    $("#name-input").val("");
+    $("#zip-input").val("");
+    $("#cuisine-input").val("");
 
     $("#full-user-list").append("<div class='well'><span class='user-name'> " +
         childSnapshot.val().name +
