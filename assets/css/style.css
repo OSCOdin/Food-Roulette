@@ -33,12 +33,11 @@ h4{
     font-family: 'Spicy Rice', cursive;    
 }
 
-#foodWheel{    
-    background-color: whitesmoke;
-    font-family: 'Lato', sans-serif;
-    opacity: 0.7;
+#foodWheel{   
+    font-family: 'Lato', sans-serif;    
     align-items: center;
     align-content: center;
+    color: beige;
 }
 
 #details{
@@ -56,4 +55,5 @@ h4{
 }
 #canvas{
     align-content: center;
+    opacity: 0.7;
 }
