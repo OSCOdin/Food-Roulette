@@ -1,15 +1,14 @@
 // on click restaurant name populates container along with map image from google api
 $(document).on('click', '#submit', function (e) {
     $('#restaurantPicked').append('<h1>YOU ARE EATING HERE: <span id="restaurantPick"></span></h1>');
-    $('#restaurantPicked').append('<h3></h3>');
-    $('#restaurantPicked').append('<h3></h3>');
+    $('#details').append('<h3></h3>');
     $('#map').append('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
 });
 
 // yelp API
 var zipCode = $('#user-input').val();
-// const apiKey =
-//     'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
+const apiKey =
+    'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
 const yelpUrl = 'https://api.yelp.com/v3/businesses/search?location=${zipCode}';
 const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
 $.ajax({
