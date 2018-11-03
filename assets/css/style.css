@@ -28,6 +28,14 @@ h4{
     color:beige;
 }
 
+#spin {
+    padding: 10px 50px;
+}
+
+.wheel {
+    margin-left: 590px;
+}
+
 #interactive{
     color:beige;
     font-family: 'Spicy Rice', cursive;    
