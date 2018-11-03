@@ -1,5 +1,7 @@
 // on click restaurant name populates container along with map image from google api
-$(document).on('click', '#submit', function (e) {
+$(document).on('click', '#spin', function (e) {
+    // append list of restaurants from yelp to restaurantOptions array
+
     $('#restaurantPick').prepend('<h1>"YOU ARE EATING HERE: " + <span id="restaurantPick">Picked Restaurant</span></h1>');
     $('#details').prepend('<h3>Address / Rating / other info</h3>');
     $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
