@@ -74,7 +74,7 @@ function drawRouletteWheel() {
     } 
 
     //Arrow
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "Black";
     ctx.beginPath();
     ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
     ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
@@ -92,7 +92,7 @@ function drawRouletteWheel() {
 function spin() {
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
-  spinTimeTotal = Math.random() * 3 + 4 * 2000;
+  spinTimeTotal = Math.random() * 3 + 4 * 3000;
   rotateWheel();
 }
 
