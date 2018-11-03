@@ -49,16 +49,16 @@ $.ajax({
 
 //     });
 
-  // Initialize Firebase
-  var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyCk7wKFv8P11TbNiMWcnjlJpgLSxHNYDSM",
     authDomain: "food-roulette-c479a.firebaseapp.com",
     databaseURL: "https://food-roulette-c479a.firebaseio.com",
     projectId: "food-roulette-c479a",
     storageBucket: "food-roulette-c479a.appspot.com",
     messagingSenderId: "372564226102"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
@@ -97,6 +97,11 @@ dataRef.ref().on("child_added", function (childSnapshot) {
         " </span><span class='user-zip'> " + childSnapshot.val().zip +
         " </span><span class='user-cuisine'> " + childSnapshot.val().cuisine +
         " </span></div>");
+
+    // Clear forms
+    $("#name-input").val("");
+    $("#zip-input").val("");
+    $("#cuisine-input").val("");
 
     // incorrect formatting input
 }, function (errorObject) {

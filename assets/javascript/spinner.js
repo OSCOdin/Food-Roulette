@@ -12,7 +12,7 @@ var spinTimeTotal = 0;
 
 var ctx;
 
-document.getElementById("submit").addEventListener("click", spin);
+document.getElementById("spin").addEventListener("click", spin);
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
@@ -23,6 +23,7 @@ function RGB2Color(r,g,b) {
 	return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
 
+// Creates color gradient / will remove
 function getColor(item, maxitem) {
   var phase = 0;
   var center = 128;
@@ -36,6 +37,7 @@ function getColor(item, maxitem) {
   return RGB2Color(red,green,blue);
 }
 
+// Create Roulette Wheel
 function drawRouletteWheel() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
@@ -72,7 +74,7 @@ function drawRouletteWheel() {
     } 
 
     //Arrow
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "red";
     ctx.beginPath();
     ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
     ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
@@ -120,7 +122,7 @@ function stopRotateWheel() {
   ctx.restore();
 }
 
-
+// slows down rotation of wheel smoothly
 function easeOut(t, b, c, d) {
   var ts = (t/=d)*t;
   var tc = ts*t;
