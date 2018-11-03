@@ -3,7 +3,7 @@ $(document).on('click', '#submit', function (e) {
     $('#restaurantPicked').append('<h1>YOU ARE EATING HERE: <span id="restaurantPick"></span></h1>');
     $('#restaurantPicked').append('<h3></h3>');
     $('#restaurantPicked').append('<h3></h3>');
-    $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
+    $('#map').append('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
 });
 
 // yelp API
@@ -49,16 +49,16 @@ $.ajax({
 
 //     });
 
-// Initialize Firebase / Need to create a new database to store user name and data
-var config = {
-    // apiKey: "AIzaSyCs3K5zwuOuS0odq89IpPLC7HnXTOcDqgI",
-    authDomain: "recent-user-with-all-use-e8e76.firebaseapp.com",
-    databaseURL: "https://recent-user-with-all-use-e8e76.firebaseio.com",
-    projectId: "recent-user-with-all-use-e8e76",
-    storageBucket: ""
-};
-
-firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCk7wKFv8P11TbNiMWcnjlJpgLSxHNYDSM",
+    authDomain: "food-roulette-c479a.firebaseapp.com",
+    databaseURL: "https://food-roulette-c479a.firebaseio.com",
+    projectId: "food-roulette-c479a",
+    storageBucket: "food-roulette-c479a.appspot.com",
+    messagingSenderId: "372564226102"
+  };
+  firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
