@@ -1,8 +1,10 @@
 // on click restaurant name populates container along with map image from google api
-$(document).on('click', '#submit', function (e) {
-    $('#restaurantPicked').append('<h1>YOU ARE EATING HERE: <span id="restaurantPick"></span></h1>');
-    $('#details').append('<h3></h3>');
-    $('#map').append('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
+$(document).on('click', '#spin', function (e) {
+    // append list of restaurants from yelp to restaurantOptions array
+
+    $('#restaurantPick').prepend('<h1>"YOU ARE EATING HERE: " + <span id="restaurantPick">Picked Restaurant</span></h1>');
+    $('#details').prepend('<h3>Address / Rating / other info</h3>');
+    $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
 });
 
 // yelp API
@@ -102,7 +104,7 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     $("#zip-input").val("");
     $("#cuisine-input").val("");
 
-    // incorrect formatting input
+    // incorrect user input formatting
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });

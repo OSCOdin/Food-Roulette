@@ -1,6 +1,6 @@
 // roulette wheel
 // 
-var restaurantOptions = ["$100", "$10", "$25", "$20", "Lose", "$1000000", "Lose", "$350", "$5", "$99"];
+var restaurantOptions = ["American", "Pizza", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
 
 var startAngle = 0;
 var arc = Math.PI / (restaurantOptions.length / 2);
@@ -53,6 +53,7 @@ function drawRouletteWheel() {
 
     ctx.font = 'bold 12px Helvetica, Arial';
 
+    // fill sections with options
     for(var i = 0; i < restaurantOptions.length; i++) {
       var angle = startAngle + i * arc;
       ctx.fillStyle = getColor(i, restaurantOptions.length);
