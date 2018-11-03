@@ -116,6 +116,7 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", functi
 });
 
 var yelpList = [];
+var restaurantOptions = [];
 var restaurantPick;
 var rollStarted = false;
 
