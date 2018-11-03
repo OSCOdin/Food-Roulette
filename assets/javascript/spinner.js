@@ -41,9 +41,9 @@ function getColor(item, maxitem) {
 function drawRouletteWheel() {
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
-    var outsideRadius = 240;
-    var textRadius = 170;
-    var insideRadius = 110;
+    var outsideRadius = 145;
+    var textRadius = 112;
+    var insideRadius = 62;
 
     ctx = canvas.getContext("2d");
     ctx.clearRect(0,0,500,500);

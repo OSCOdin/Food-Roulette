@@ -27,17 +27,6 @@
 
 <body>
 
-    <!-- Title Bar -->
-    <!-- <div class="title-bar primary">
-        <div class="title-bar-left">
-            <button class="menu-icon" type="button"></button>
-            <span class="title-bar-title">Ravenous Roulette</span>
-        </div>
-        <div class="title-bar-right">
-            <button class="menu-icon" type="button"></button>
-        </div>
-    </div> -->
-
     <!-- Content Area Setup -->
     <div class="grid-container" id="content">
         <!-- Headline -->
@@ -65,17 +54,6 @@
                                 <div class="input-group">
                                     <input class="input-group-field" type="text" placeholder="Zip Code" id="zip-input">
                                 </div>
-                                <!-- Cuisine Selector -->
-                                <div class="input-group float-center" id="cuisine-input">
-                                    <select>
-                                        <option value="american">American</option>
-                                        <option value="mexican">Mexican</option>
-                                        <option value="chinese">Chinese</option>
-                                        <option value="japanese">Japanese</option>
-                                        <option value="indian">Indian</option>
-                                        <option value="mediterranean">Mediterranean</option>
-                                    </select>
-                                </div>
                             </div>
                             <!-- Submit Button -->
                             <button class="button warning expanded">Find Food Now!</button>
@@ -86,32 +64,28 @@
         </div>
         <div class="cell small-3"></div>
     </div>
-    <!-- Roulette Wheel -->
-    <div class="wheel">
-        <input type="button" value="spin" id='spin' />
-        <canvas id="canvas" width="700" height="700"></canvas>
-    </div>
+
     <!-- choice -->
-    <div class="grid-x grid-margin-x">
-        <div class="cell small-3"></div>
-        <div class="cell small-6">
-            <div class="callout warning" id="restaurantPick">
-                <!-- all details in here are changeable just wanted a space to add items to -->
-                <h5></h5>
-                <p></p>
-                <a href=""></a>
+    <div class="grid-x">
+        <div class="cell small-4"></div>
+        <div class="cell small-4 text-center">
+            <div class="callout text-center" id="foodWheel">
+                <h4>Spin the Wheel to Make your Choice!</h4>
+                <!-- Roulette Wheel -->
+                <div class="wheel" id="wheel">
+                    <input type="button" value="spin" id='spin' />
+                    <canvas id="canvas" width="400" height="400"></canvas>
+                </div>
             </div>
         </div>
     </div>
-    <div class="cell small-2"></div>
+    <div class="cell small-4"></div>
     <!-- details -->
     <div class="grid-x grid-margin-x">
         <div class="cell small-3"></div>
         <div class="cell small-6">
             <div class="callout warning text-center" id="details">
-                <h5>Name of Restaurant</h5>
-                <p>Quick details on the restaurant!</p>
-                <a href="">link to maps, yelp, etc</a>
+                <h5>Yelp</h5>
             </div>
         </div>
         <div class="cell small-3"></div>

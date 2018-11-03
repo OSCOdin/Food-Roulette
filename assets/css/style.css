@@ -28,23 +28,32 @@ h4{
     color:beige;
 }
 
-.wheel {
-    margin-left: 540px;
-}
-
 #interactive{
     color:beige;
     font-family: 'Spicy Rice', cursive;    
 }
 
-#choice{
+#foodWheel{    
     background-color: whitesmoke;
     font-family: 'Lato', sans-serif;
     opacity: 0.7;
+    align-items: center;
+    align-content: center;
 }
 
 #details{
     background-color: whitesmoke;
     font-family: 'Lato', sans-serif;
     opacity: 0.7;
+}
+
+ 
+#wheel{
+    align-content: center;
+    float: center;
+    height: 200;
+    width: 200;        
+}
+#canvas{
+    align-content: center;
 }
