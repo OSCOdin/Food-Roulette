@@ -7,6 +7,9 @@ $(document).on('click', '#spin', function (e) {
     $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
 });
 
+// $('#restaurantPick').val("");
+// $('#details').val("");
+
 // yelp API
 var zipCode = $('#user-input').val();
 const apiKey =
@@ -18,21 +21,21 @@ $.ajax({
     headers: {
         authorization: 'Bearer ' + apiKey
     }
-    drawRouletteWheel();
+    // drawRouletteWheel();
 })
     .done(response => {
         console.log(response);
           // Constructing HTML containing the artist information
-      var artistName = $("<h1>").text(response.name);
-      var artistURL = $("<a>").attr("href", response.url).append(artistName);
-      var artistImage = $("<img>").attr("src", response.thumb_url);
-      var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
-      var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
-      var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+    //   var artistName = $("<h1>").text(response.name);
+    //   var artistURL = $("<a>").attr("href", response.url).append(artistName);
+    //   var artistImage = $("<img>").attr("src", response.thumb_url);
+    //   var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
+    //   var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
+    //   var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
 
-      // Empty the contents of the artist-div, append the new artist content
-      $("#artist-div").empty();
-      $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
+    //   // Empty the contents of the artist-div, append the new artist content
+    //   $("#artist-div").empty();
+    //   $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
 
     })
     .catch(error => {
@@ -53,42 +56,36 @@ $.ajax({
 //         authorization: 'Bearer ' + apiKey
 //     }
 // })
-//     .done(response => {
-//         console.log(response);
-
-//     })
 //     .catch(error => {
 //         console.error(error);
 
 //     });
 
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyAJcW9C5QN4CxpvOSaUjzfiXqC0zzb07Gs",
-    authDomain: "foodroulette-2ed40.firebaseapp.com",
-    databaseURL: "https://foodroulette-2ed40.firebaseio.com",
-    projectId: "foodroulette-2ed40",
-    storageBucket: "",
-    messagingSenderId: "619984592173"
+   // Initialize Firebase
+   var config = {
+    apiKey: "AIzaSyDYq6U-Ef_3VqToxXHZPLY8xnQMff_2HIk",
+    authDomain: "ravenous-roulette.firebaseapp.com",
+    databaseURL: "https://ravenous-roulette.firebaseio.com",
+    projectId: "ravenous-roulette",
+    storageBucket: "ravenous-roulette.appspot.com",
+    messagingSenderId: "172735416002"
   };
   firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
 // Capture Button Click
-$("#add-user").on("click", function (event) {
+$("#spin").on("click", function (event) {
     event.preventDefault();
 
     var name = $("#name-input").val().trim();
     var zip = $("#zip-input").val().trim();
-    // var cuisine = $("#cuisine-input").val().trim();
 
     // Code for the push
     dataRef.ref().push({
 
         name: name,
         zip: zip,
-        cuisine: cuisine,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
     });
 });
@@ -120,7 +117,6 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", functi
     // Change the HTML to reflect
     $("#name-display").text(snapshot.val().name);
     $("#zip-display").text(snapshot.val().zip);
-    $("#cuisine-display").text(snapshot.val().cuisine);
 });
 
 var yelpList = [];
