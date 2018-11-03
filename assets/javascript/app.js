@@ -18,9 +18,21 @@ $.ajax({
     headers: {
         authorization: 'Bearer ' + apiKey
     }
+    drawRouletteWheel();
 })
     .done(response => {
         console.log(response);
+          // Constructing HTML containing the artist information
+      var artistName = $("<h1>").text(response.name);
+      var artistURL = $("<a>").attr("href", response.url).append(artistName);
+      var artistImage = $("<img>").attr("src", response.thumb_url);
+      var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
+      var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
+      var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+
+      // Empty the contents of the artist-div, append the new artist content
+      $("#artist-div").empty();
+      $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
 
     })
     .catch(error => {
@@ -52,14 +64,14 @@ $.ajax({
 
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCk7wKFv8P11TbNiMWcnjlJpgLSxHNYDSM",
-    authDomain: "food-roulette-c479a.firebaseapp.com",
-    databaseURL: "https://food-roulette-c479a.firebaseio.com",
-    projectId: "food-roulette-c479a",
-    storageBucket: "food-roulette-c479a.appspot.com",
-    messagingSenderId: "372564226102"
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyAJcW9C5QN4CxpvOSaUjzfiXqC0zzb07Gs",
+    authDomain: "foodroulette-2ed40.firebaseapp.com",
+    databaseURL: "https://foodroulette-2ed40.firebaseio.com",
+    projectId: "foodroulette-2ed40",
+    storageBucket: "",
+    messagingSenderId: "619984592173"
+  };
+  firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
@@ -69,7 +81,7 @@ $("#add-user").on("click", function (event) {
 
     var name = $("#name-input").val().trim();
     var zip = $("#zip-input").val().trim();
-    var cuisine = $("#cuisine-input").val().trim();
+    // var cuisine = $("#cuisine-input").val().trim();
 
     // Code for the push
     dataRef.ref().push({
@@ -88,11 +100,6 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     console.log(childSnapshot.val().zip);
     console.log(childSnapshot.val().cuisine);
 
-    // Clear form
-    $("#name-input").val("");
-    $("#zip-input").val("");
-    $("#cuisine-input").val("");
-
     $("#full-user-list").append("<div class='well'><span class='user-name'> " +
         childSnapshot.val().name +
         " </span><span class='user-zip'> " + childSnapshot.val().zip +
@@ -102,7 +109,7 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     // Clear forms
     $("#name-input").val("");
     $("#zip-input").val("");
-    $("#cuisine-input").val("");
+    // $("#cuisine-input").val("");
 
     // incorrect user input formatting
 }, function (errorObject) {

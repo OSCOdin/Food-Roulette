@@ -1,9 +1,9 @@
 // roulette wheel
 // 
-var restaurantOptions = ["American", "Pizza", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
+var restaurantOptions = ["American Pizza", "Pizza sdf sdjfsdfa sd sdfsd sfs", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
 
 var startAngle = 0;
-var arc = Math.PI / (restaurantOptions.length / 2);
+var arc;
 var spinTimeout = null;
 
 var spinArcStart = 10;
@@ -39,6 +39,7 @@ function getColor(item, maxitem) {
 
 // Create Roulette Wheel
 function drawRouletteWheel() {
+  arc = Math.PI / (restaurantOptions.length / 2);
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
     var outsideRadius = 240;
@@ -129,5 +130,3 @@ function easeOut(t, b, c, d) {
   var tc = ts*t;
   return b+c*(tc + -3*ts + 3*t);
 }
-
-drawRouletteWheel();
