@@ -30,17 +30,17 @@ $.ajax({
 })
     .done(response => {
         console.log(response);
-          // Constructing HTML containing the artist information
-    //   var artistName = $("<h1>").text(response.name);
-    //   var artistURL = $("<a>").attr("href", response.url).append(artistName);
-    //   var artistImage = $("<img>").attr("src", response.thumb_url);
-    //   var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
-    //   var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
-    //   var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
+        // Constructing HTML containing the artist information
+        //   var artistName = $("<h1>").text(response.name);
+        //   var artistURL = $("<a>").attr("href", response.url).append(artistName);
+        //   var artistImage = $("<img>").attr("src", response.thumb_url);
+        //   var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
+        //   var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
+        //   var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
 
-    //   // Empty the contents of the artist-div, append the new artist content
-    //   $("#artist-div").empty();
-    //   $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
+        //   // Empty the contents of the artist-div, append the new artist content
+        //   $("#artist-div").empty();
+        //   $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
 
     })
     .catch(error => {
@@ -66,21 +66,21 @@ $.ajax({
 
 //     });
 
-   // Initialize Firebase
-   var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyDYq6U-Ef_3VqToxXHZPLY8xnQMff_2HIk",
     authDomain: "ravenous-roulette.firebaseapp.com",
     databaseURL: "https://ravenous-roulette.firebaseio.com",
     projectId: "ravenous-roulette",
     storageBucket: "ravenous-roulette.appspot.com",
     messagingSenderId: "172735416002"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
 var dataRef = firebase.database();
 
 // Capture Button Click
-$("#spin").on("click", function (event) {
+$("#submit").on("click", function (event) {
     event.preventDefault();
 
     var name = $("#name-input").val().trim();
@@ -105,20 +105,18 @@ dataRef.ref().on("child_added", function (childSnapshot) {
     $("#full-user-list").append("<div class='well'><span class='user-name'> " +
         childSnapshot.val().name +
         " </span><span class='user-zip'> " + childSnapshot.val().zip +
-        " </span><span class='user-cuisine'> " + childSnapshot.val().cuisine +
         " </span></div>");
 
     // Clear forms
     $("#name-input").val("");
     $("#zip-input").val("");
-    // $("#cuisine-input").val("");
 
     // incorrect user input formatting
 }, function (errorObject) {
     console.log("Errors handled: " + errorObject.code);
 });
 
-dataRef.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", function (snapshot) {
+dataRef.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", function (snapshot) {
     // Change the HTML to reflect
     $("#name-display").text(snapshot.val().name);
     $("#zip-display").text(snapshot.val().zip);
@@ -127,17 +125,3 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", functi
 var yelpList = [];
 var restaurantOptions = [];
 var restaurantPick;
-var rollStarted = false;
-
-function resetRoll() {
-    rollStarted = false;
-
-    restaurantOptionIndex = Math.floor(Math.random() * (yelpList.length));
-
-    for (var i = 0; i < possibleNames[currentNameIndex].length; i++) {
-
-    }
-    // document.getElementById.......
-
-    // updateDisplay();
-};
