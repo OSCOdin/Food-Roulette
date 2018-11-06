@@ -2,6 +2,8 @@
 $(document).on('click', '#submit', function (e) {
     // append list of restaurants from yelp to restaurantOptions array
 
+    // Populate text above wheel with instructions and greeting
+    $('#submit').append("Hello " + name + ". Click here to find out where you're eating");
 });
 
 // on click restaurant name populates container along with map image from google api

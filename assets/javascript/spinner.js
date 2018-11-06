@@ -122,7 +122,7 @@ function stopRotateWheel() {
   var text = restaurantOptions[index]
   // Fills card below wheel with text and the restaurant picked on the wheel
   $('#restaurantPick').append("You are eating here: " + text)
-  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+  // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
 
