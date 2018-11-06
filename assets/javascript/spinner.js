@@ -1,8 +1,9 @@
 // roulette wheel
 // 
-var restaurantOptions = ["American", "Pizza", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
+var restaurantOptions = [];
 
 var startAngle = 0;
+// Move out of global scope and into Create Roulette Wheel function
 var arc = Math.PI / (restaurantOptions.length / 2);
 var spinTimeout = null;
 
@@ -130,4 +131,5 @@ function easeOut(t, b, c, d) {
   return b+c*(tc + -3*ts + 3*t);
 }
 
+// move to app.js
 drawRouletteWheel();

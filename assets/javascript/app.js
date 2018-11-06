@@ -1,3 +1,9 @@
+// take zip of user and pull yelp data into wheel
+$(document).on('click', '#submit', function (e) {
+    // append list of restaurants from yelp to restaurantOptions array
+
+});
+
 // on click restaurant name populates container along with map image from google api
 $(document).on('click', '#spin', function (e) {
     // append list of restaurants from yelp to restaurantOptions array
@@ -116,20 +122,20 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(10).on("child_added", functi
     $("#cuisine-display").text(snapshot.val().cuisine);
 });
 
-var yelpList = [];
-var restaurantOptions = [];
-var restaurantPick;
-var rollStarted = false;
+// var yelpList = [];
+// var restaurantOptions = [];
+// var restaurantPick;
+// var rollStarted = false;
 
-function resetRoll() {
-    rollStarted = false;
+// function resetRoll() {
+//     rollStarted = false;
 
-    restaurantOptionIndex = Math.floor(Math.random() * (yelpList.length));
+//     restaurantOptionIndex = Math.floor(Math.random() * (yelpList.length));
 
-    for (var i = 0; i < possibleNames[currentNameIndex].length; i++) {
+//     for (var i = 0; i < possibleNames[currentNameIndex].length; i++) {
 
-    }
-    // document.getElementById.......
+//     }
+//     // document.getElementById.......
 
-    // updateDisplay();
-};
+//     // updateDisplay();
+// };
