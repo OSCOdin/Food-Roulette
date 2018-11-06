@@ -125,5 +125,3 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", functio
 });
 
 var yelpList = [];
-var restaurantOptions = [];
-var restaurantPick;
