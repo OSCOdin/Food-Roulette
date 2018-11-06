@@ -5,12 +5,12 @@ $(document).on('click', '#submit', function (e) {
 });
 
 // on click restaurant name populates container along with map image from google api
-$(document).on('click', '#spin', function (e) {
+// $(document).on('click', '#spin', function (e) {
 
-    $('#restaurantPick').prepend('<h1>"YOU ARE EATING HERE: " + <span id="restaurantPick">Picked Restaurant</span></h1>');
-    $('#details').prepend('<h3>Address / Rating / other info</h3>');
-    $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
-});
+//     $('#restaurantPick').prepend('<h1>YOU ARE EATING HERE: " + </h1>');
+//     $('#details').prepend('<h3>Address / Rating / other info</h3>');
+//     $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
+// });
 
 // $('#restaurantPick').val("");
 // $('#details').val("");
