@@ -24,6 +24,11 @@
 
     <div id="map"></div>
     <script>
+        var pos = "";
+
+
+
+
         var lat1 = 0;
         var lon1 = 0;
 
@@ -31,40 +36,17 @@
         // foodOptions = ["pizza", "chinese", "italian", "mexican", "thai", "burgers", "diners", "latin", "bbq", "pubs",
         //     "american", "tradamerican", "newamerican", "indian", "breakfast", "breakfast_brunch", "steakhouse"
         // ]
-
-        function YelpCall() {
-            const apiKey =
-                'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
-            const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=' +
-                lat1 + '&longitude=' + lon1 + '&limit=3';
-            // const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipCode}&latitude&longitude';
-            const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
-            $.ajax({
-                    async: false,
-                    url: proxyUrl + yelpUrl,
-                    headers: {
-                        authorization: 'Bearer ' + apiKey
-                    }
-
-                })
-                .done(response => {
-                    console.log(response)
-                    response.businesses.forEach(function(businesses){
-                        console.log(businesses)
-                    })
-
-                })
-                .catch(error => {
-                    console.error(error);
-
-                });
-        }
-
         var map, infoWindow;
 
         function initMap() {
+            // const location = YelpCall()
+            // // YelpCall();
+            // console.log(location)
+            console.log(location1)
 
-            
+
+
+
             map = new google.maps.Map(
                 document.getElementById('map'), {
                     zoom: 10,
@@ -73,18 +55,18 @@
                         lng: 150.644
                     },
                 });
-            // The marker, positioned at Uluru
-            // var marker1 = new google.maps.Marker({
-            //     position: uluru,
-            //     map: map
-            // });
-            // var marker2 = new google.maps.Marker({
-            //     position: ulura,
-            //     map: map
-            // });
+            var marker1 = new google.maps.Marker({
+                position: location1,
+                map: map
+            })
+            map.setCenter(pos);
+        }
+        var location1 = null;
+
+        function YelpCall() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    var pos = {
+                    pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
@@ -95,8 +77,43 @@
                     // infoWindow.setPosition(pos.lat);
                     // infoWindow.setContent('Location found.');
                     // infoWindow.open(map);
-                    map.setCenter(pos);
-                    YelpCall();
+
+                    const apiKey =
+                        'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
+                    const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=' +
+                        lat1 + '&longitude=' + lon1 + '&limit=3';
+                    // const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipCode}&latitude&longitude';
+                    const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
+                    $.ajax({
+                            async: false,
+                            url: proxyUrl + yelpUrl,
+                            headers: {
+                                authorization: 'Bearer ' + apiKey
+                            }
+
+                        })
+                        .done(response => {
+                            console.log(response)
+                            latitude1 = response.businesses[1].coordinates.latitude;
+                            longitude1 = response.businesses[1].coordinates.longitude;
+                            location1 = {
+                                lat: latitude1,
+                                lng: longitude1
+                            }
+                            console.log(location1)
+                            // response.businesses.forEach(function(businesses){
+                            //     console.log(businesses)
+
+                            // })
+                            var googleTag = $(
+                                '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
+                            )
+                            $("body").append(googleTag);
+                        })
+                        .catch(error => {
+                            console.error(error);
+
+                        });
                 }, function () {
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
@@ -105,7 +122,11 @@
                 handleLocationError(false, infoWindow, map.getCenter());
             }
 
+            console.log(lat1, lon1)
+
         }
+
+
 
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             infoWindow.setPosition(pos);
@@ -115,9 +136,9 @@
             infoWindow.open(map);
         }
         console.log(lat1, lon1)
+        YelpCall()
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">
-    </script>
+
 </body>
 
 </html>
