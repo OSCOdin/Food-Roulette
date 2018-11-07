@@ -40,12 +40,12 @@ function drawRouletteWheel() {
   arc = Math.PI / (restaurantOptions.length / 2);
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
-    var outsideRadius = 200;
-    var textRadius = 112;
-    var insideRadius = 50;
+    var outsideRadius = 240;
+    var textRadius = 135;
+    var insideRadius = 35;
 
     ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, 500, 500);
+    ctx.clearRect(500, 500, 500, 500);
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
@@ -67,7 +67,7 @@ function drawRouletteWheel() {
       ctx.fillStyle = "black";
       ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius,
         250 + Math.sin(angle + arc / 2) * textRadius);
-      ctx.rotate(angle + arc / 2 + Math.PI / 2);
+      ctx.rotate(angle + arc / 2 + Math.PI / 150);
       var text = restaurantOptions[i];
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
@@ -118,9 +118,9 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = '15px Helvetica, Arial';
   var text = restaurantOptions[index]
-  var textLoc = restaurantCoord[index]
+  // var textLoc = restaurantCoord[index]
   // Fills card below wheel with text and the restaurant picked on the wheel
-  $('#details').append('<h2>' + "You are eating here:  " + text + '</h2>')
+  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
   // $('#details').append('<h3>' + "You are eating here:  " + textLoc + '</h3>')
 
   // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);

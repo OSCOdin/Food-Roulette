@@ -126,6 +126,8 @@ console.log(lat1, lon1)
 //calls yelp api to start function
 YelpCall();
 // initMap();
+
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDYq6U-Ef_3VqToxXHZPLY8xnQMff_2HIk",
