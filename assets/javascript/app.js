@@ -1,3 +1,6 @@
+var name;
+var zip;
+
 // take user name and zip and pull restaurants from yelp api and fill wheel
 $(document).on('click', '#submit', function (e) {
     // append list of restaurants from yelp to restaurantOptions array
@@ -68,8 +71,8 @@ var dataRef = firebase.database();
 $("#submit").on("click", function (event) {
     event.preventDefault();
 
-    var name = $("#name-input").val().trim();
-    var zip = $("#zip-input").val().trim();
+    name = $("#name-input").val().trim();
+    zip = $("#zip-input").val().trim();
 
     // Code for the push
     dataRef.ref().push({
