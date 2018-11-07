@@ -3,14 +3,6 @@ var zip;
 var restaurantOptions = [];
 var restaurantCoord = [];
 
-// take user name and zip and pull restaurants from yelp api and fill wheel
-$(document).on('click', '#submit', function (e) {
-
-    // Populate greeting section with spin button
-    // $('#greeting').append("Hello " + name + "." + " Click here to find out where you're eating:;
-
-});
-
 // Empty restaurant picked / greeting / wheel
 // $('#details').val("");
 // $('#greeting').val("");

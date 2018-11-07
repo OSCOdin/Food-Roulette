@@ -14,11 +14,11 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
-  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
+  return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
 }
 
-function RGB2Color(r,g,b) {
-	return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
+function RGB2Color(r, g, b) {
+  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
 
 // Creates color gradient / will remove
@@ -26,13 +26,13 @@ function getColor(item, maxitem) {
   var phase = 0;
   var center = 128;
   var width = 127;
-  var frequency = Math.PI*2/maxitem;
-  
-  red   = Math.sin(frequency*item+2+phase) * width + center;
-  green = Math.sin(frequency*item+0+phase) * width + center;
-  blue  = Math.sin(frequency*item+4+phase) * width + center;
-  
-  return RGB2Color(red,green,blue);
+  var frequency = Math.PI * 2 / maxitem;
+
+  red = Math.sin(frequency * item + 2 + phase) * width + center;
+  green = Math.sin(frequency * item + 0 + phase) * width + center;
+  blue = Math.sin(frequency * item + 4 + phase) * width + center;
+
+  return RGB2Color(red, green, blue);
 }
 
 // Create Roulette Wheel
@@ -40,20 +40,20 @@ function drawRouletteWheel() {
   arc = Math.PI / (restaurantOptions.length / 2);
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
-    var outsideRadius = 145;
+    var outsideRadius = 200;
     var textRadius = 112;
-    var insideRadius = 62;
+    var insideRadius = 50;
 
     ctx = canvas.getContext("2d");
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(0, 0, 500, 500);
 
     ctx.strokeStyle = "black";
     ctx.lineWidth = 1;
 
     ctx.font = 'bold 12px Helvetica, Arial';
 
-    // fill sections with options
-    for(var i = 0; i < restaurantOptions.length; i++) {
+    // fill sections with restaurantOptions
+    for (var i = 0; i < restaurantOptions.length; i++) {
       var angle = startAngle + i * arc;
       ctx.fillStyle = getColor(i, restaurantOptions.length);
 
@@ -65,13 +65,13 @@ function drawRouletteWheel() {
 
       ctx.save();
       ctx.fillStyle = "black";
-      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
-                    250 + Math.sin(angle + arc / 2) * textRadius);
+      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius,
+        250 + Math.sin(angle + arc / 2) * textRadius);
       ctx.rotate(angle + arc / 2 + Math.PI / 2);
       var text = restaurantOptions[i];
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
-    } 
+    }
 
     //Arrow
     ctx.fillStyle = "Black";
@@ -99,7 +99,7 @@ function spin() {
 // rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
 function rotateWheel() {
   spinTime += 40;
-  if(spinTime >= spinTimeTotal) {
+  if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
     return;
   }
@@ -119,14 +119,14 @@ function stopRotateWheel() {
   ctx.font = '15px Helvetica, Arial';
   var text = restaurantOptions[index]
   // Fills card below wheel with text and the restaurant picked on the wheel
-  $('#details').append("You are eating here: " + text)
+  $('#details').append('<h2>' + "You are eating here:  " + text + '</h2>')
   // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
 
 // slows down rotation of wheel smoothly
 function easeOut(t, b, c, d) {
-  var ts = (t/=d)*t;
-  var tc = ts*t;
-  return b+c*(tc + -3*ts + 3*t);
+  var ts = (t /= d) * t;
+  var tc = ts * t;
+  return b + c * (tc + -3 * ts + 3 * t);
 }
