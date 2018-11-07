@@ -1,5 +1,5 @@
 // roulette wheel
-var restaurantOptions = ["American Pizza", "Pizza sdf sdjfsdfa sd sdfsd sfs", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
+var restaurantOptions = [];
 
 var startAngle = 0;
 var arc;
@@ -120,7 +120,7 @@ function stopRotateWheel() {
   ctx.font = '15px Helvetica, Arial';
   var text = restaurantOptions[index]
   // Fills card below wheel with text and the restaurant picked on the wheel
-  $('#restaurantPick').append("You are eating here: " + text)
+  $('#details').append("You are eating here: " + text)
   // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
