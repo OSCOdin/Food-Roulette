@@ -5,18 +5,11 @@ var restaurantCoord = [];
 
 // take user name and zip and pull restaurants from yelp api and fill wheel
 $(document).on('click', '#submit', function (e) {
-    // append list of restaurants from yelp to restaurantOptions array
 
     // Populate greeting section with spin button
-    $('#greeting').append("Hello " + name + "." + " Click here to find out where you're eating: " + '<input type="button" value="Spin!" id="spin" />');
+    // $('#greeting').append("Hello " + name + "." + " Click here to find out where you're eating:;
 
 });
-
-// on click restaurant name populates container along with map image from google api
-// $(document).on('click', '#spin', function (e) {
-
-//     $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
-// });
 
 // Empty restaurant picked / greeting / wheel
 // $('#details').val("");
@@ -108,22 +101,6 @@ function YelpCall() {
             }
             
         })
-
-            // .done(response => {
-            //     //catching yelps response to create markers
-            //     console.log(response)
-            //     latitude1 = response.businesses[1].coordinates.latitude;
-            //     longitude1 = response.businesses[1].coordinates.longitude;
-            //     location1 = {
-            //         lat: latitude1,
-            //         lng: longitude1
-            //     }
-            //     //appending script tag to html as to call maps api
-            //     var googleTag = $(
-            //         '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
-            //     )
-            //     $("body").append(googleTag);
-            // })
             .catch(error => {
                 console.error(error);
             });
