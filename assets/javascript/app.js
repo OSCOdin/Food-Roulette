@@ -2,6 +2,8 @@ var name;
 var zip;
 var restaurantOptions = [];
 var restaurantCoord = [];
+latitude1 = [];
+longitude1 = [];
 
 // Empty restaurant picked / greeting / wheel
 // $('#details').val("");
@@ -13,7 +15,7 @@ var pos = "";
 var lat1 = 0;
 var lon1 = 0;
 var map, infoWindow;
-// function to create map
+// // function to create map
 function initMap() {
     console.log(location1)
     // actual map being created
@@ -47,6 +49,7 @@ function YelpCall() {
             lat1 = position.coords.latitude;
             lon1 = position.coords.longitude;
             console.log(lat1, lon1)
+            
             //yelp api
             const apiKey =
                 'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
@@ -61,14 +64,15 @@ function YelpCall() {
                     authorization: 'Bearer ' + apiKey
                 }
             }).then(function (response) {
-                latitude1 = response.businesses[1].coordinates.latitude;
-                longitude1 = response.businesses[1].coordinates.longitude;
-                location1 = {
-                    lat: latitude1,
-                    lng: longitude1,
+                // latitude1 = response.businesses[3].coordinates.latitude;
+                // longitude1 = response.businesses[3].coordinates.longitude;
+                // location1 = {
+                //     lat: latitude1,
+                //     lng: longitude1,
                 
-                }
+                // }
                 console.log(response);
+
                 for(let i = 0; i<response.businesses.length; i++) {
 
                 restaurantOptions.push(response.businesses[i].name);
@@ -78,20 +82,26 @@ function YelpCall() {
                 console.log(restaurantOptions);
                 drawRouletteWheel()
 
+                // placing pin on google maps
                 console.log(response)
-                latitude1 = response.businesses[1].coordinates.latitude;
-                longitude1 = response.businesses[1].coordinates.longitude;
+                latitude1 = response.businesses[i].coordinates.latitude;
+                longitude1 = response.businesses[i].coordinates.longitude;
                 location1 = {
                     lat: latitude1,
                     lng: longitude1
                 }
-                //appending script tag to html as to call maps api
+                // //appending script tag to html as to call maps api
+                // var googleTag = $(
+                //     '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
+                // )
+                // $("body").append(googleTag);
+                
+            }
+               //appending script tag to html as to call maps api
                 var googleTag = $(
                     '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
                 )
                 $("body").append(googleTag);
-            }
-            
         })
             .catch(error => {
                 console.error(error);
@@ -114,41 +124,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 console.log(lat1, lon1)
 //calls yelp api to start function
-YelpCall()
-
-// yelp API
-// functino yelpCall() {
-// const apiKey =
-//     'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
-// const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=40.0580608&longitude=-75.5802112&distance=16093.4&limit=10';
-// const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
-// $.ajax({
-//     url: proxyUrl + yelpUrl,
-//     method: 'GET',
-//     headers: {
-//         authorization: 'Bearer ' + apiKey
-//     }
-// }).then(function (response) {
-
-//     for (let i = 0; i < response.businesses.length; i++) {
-
-//         restaurantOptions.push(response.businesses[i].name);
-//         restaurantCoord.push(Response.coordinates);
-//         console.log(response)
-//     }
-//     drawRouletteWheel();
-// })
-
-//     .catch(error => {
-//         console.error(error);
-
-//     });
-
-// }
-
-var yelpList = [];
-// Google API
-
+YelpCall();
+// initMap();
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyDYq6U-Ef_3VqToxXHZPLY8xnQMff_2HIk",

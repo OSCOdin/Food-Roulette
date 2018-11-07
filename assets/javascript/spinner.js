@@ -11,7 +11,7 @@ var spinTimeTotal = 0;
 var ctx;
 
 document.getElementById("spin").addEventListener("click", spin);
-
+// $('#details').val("");
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
   return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
@@ -118,8 +118,11 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = '15px Helvetica, Arial';
   var text = restaurantOptions[index]
+  var textLoc = restaurantCoord[index]
   // Fills card below wheel with text and the restaurant picked on the wheel
   $('#details').append('<h2>' + "You are eating here:  " + text + '</h2>')
+  // $('#details').append('<h3>' + "You are eating here:  " + textLoc + '</h3>')
+
   // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
