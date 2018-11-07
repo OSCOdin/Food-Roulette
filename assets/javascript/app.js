@@ -19,31 +19,34 @@ $(document).on('click', '#submit', function (e) {
 // $('#canvas').val("");
 
 // yelp API
-const apiKey =
-    'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
-const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=40.0580608&longitude=-75.5802112&distance=16093.4&limit=10';
-const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
-$.ajax({
-    url: proxyUrl + yelpUrl,
-    method: 'GET',
-    headers: {
-        authorization: 'Bearer ' + apiKey
-    }
-}).then(function (response) {
+// functino yelpCall() {
+    const apiKey =
+        'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
+    const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=40.0580608&longitude=-75.5802112&distance=16093.4&limit=10';
+    const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
+    $.ajax({
+        url: proxyUrl + yelpUrl,
+        method: 'GET',
+        headers: {
+            authorization: 'Bearer ' + apiKey
+        }
+    }).then(function (response) {
 
-    for (let i = 0; i < response.businesses.length; i++) {
+        for (let i = 0; i < response.businesses.length; i++) {
 
-        restaurantOptions.push(response.businesses[i].name);
-        restaurantCoord.push(Response.coordinates);
-        console.log(response)
-    }
-    drawRouletteWheel();
-})
+            restaurantOptions.push(response.businesses[i].name);
+            restaurantCoord.push(Response.coordinates);
+            console.log(response)
+        }
+        drawRouletteWheel();
+    })
 
-    .catch(error => {
-        console.error(error);
+        .catch(error => {
+            console.error(error);
 
-    });
+        });
+
+// }
 
 var yelpList = [];
 // Google API
