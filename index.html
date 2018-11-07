@@ -27,18 +27,9 @@
 
 <body>
 
-    <!-- Title Bar -->
-    <!-- <div class="title-bar primary">
-        <div class="title-bar-left">
-            <button class="menu-icon" type="button"></button>
-            <span class="title-bar-title">Ravenous Roulette</span>
-        </div>
-        <div class="title-bar-right">
-            <button class="menu-icon" type="button"></button>
-        </div>
-    </div> -->
     <!-- Content Area Setup -->
     <div class="grid-container" id="content">
+        <!-- Headline -->
         <div class="grid-x grid-margin-x">
             <div class="cell small-3"></div>
             <div class="cell small-6" id="content-title">
@@ -51,7 +42,7 @@
             <div class="cell small-6" id="interactive">
                 <!-- Input area and submit/search button -->
                 <div class="middle-content-section float-center">
-                    <h4>Where will you dine tonight?!</h4>
+                    <h4>Where will you dine tonight?</h4>
                     <div class="input-group input-group-rounded float-center">
                         <form>
                             <div class="form-icons">
@@ -63,20 +54,10 @@
                                 <div class="input-group">
                                     <input class="input-group-field" type="text" placeholder="Zip Code" id="zip-input">
                                 </div>
-                                <!-- Cuisine Selector -->
-                                <!-- <div class="input-group float-center" id="cuisine-input">
-                                    <select>
-                                        <option value="american">American</option>
-                                        <option value="mexican">Mexican</option>
-                                        <option value="chinese">Chinese</option>
-                                        <option value="japanese">Japanese</option>
-                                        <option value="indian">Indian</option>
-                                        <option value="mediterranean">Mediterranean</option>
-                                    </select>
-                                </div> -->
+
                             </div>
                             <!-- Submit Button -->
-                            <input type="button" value="Submit" id='submit' />
+                            <button class="button warning" type="button" value="Submit" id='submit'>Submit</button>
                         </form>
                     </div>
                 </div>
@@ -84,38 +65,31 @@
         </div>
         <div class="cell small-3"></div>
     </div>
-    <!-- Roulette Wheel -->
-    <div class="wheel">
-        <h2 id="greeting"></h2>
-        <input type="button" value="Find Out!" id='spin' />
-        <canvas id="canvas" width="600" height="600"></canvas>
-    </div>
     <!-- choice -->
     <div class="grid-x grid-margin-x">
-        <div class="cell small-3"></div>
-        <div class="cell small-6">
-            <div class="callout warning" id="restaurantPick">
-                <!-- all details in here are changeable just wanted a space to add items to -->
-                <h5></h5>
-                <p></p>
-                <a href=""></a>
+        <!-- <div class="cell small-4"></div> -->
+        <div class="cell small-12 text-center" id="foodWheel">
+            <h4>Spin the Wheel to Make your Choice!</h4>
+            <h2 id="greeting"></h2>
+            <input type="button" value="Find Out!" id='spin' />
+            <!-- Roulette Wheel -->
+            <div class="wheel">
+                <canvas id="canvas" width="500" height="400"></canvas>
             </div>
         </div>
     </div>
-    <div class="cell small-2"></div>
+    <!-- <div class="cell small-4"></div> -->
     <!-- details -->
     <div class="grid-x grid-margin-x">
         <div class="cell small-3"></div>
         <div class="cell small-6">
             <div class="callout warning text-center" id="details">
-                <h5>Name of Restaurant</h5>
-                <p>Quick details on the restaurant!</p>
-                <a href="">link to maps, yelp, etc</a>
+                <h5>Yelp</h5>
             </div>
         </div>
         <div class="cell small-3"></div>
     </div>
-    </div>
+
 </body>
 <!-- jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
