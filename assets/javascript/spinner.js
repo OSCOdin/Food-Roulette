@@ -1,5 +1,4 @@
 // roulette wheel
-// 
 var restaurantOptions = ["American Pizza", "Pizza sdf sdjfsdfa sd sdfsd sfs", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
 
 var startAngle = 0;
