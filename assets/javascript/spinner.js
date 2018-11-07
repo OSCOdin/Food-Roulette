@@ -1,10 +1,17 @@
 // roulette wheel
+<<<<<<< HEAD
 // 
 var restaurantOptions = [];
 
 var startAngle = 0;
 // Move out of global scope and into Create Roulette Wheel function
 var arc = Math.PI / (restaurantOptions.length / 2);
+=======
+var restaurantOptions = ["American Pizza", "Pizza sdf sdjfsdfa sd sdfsd sfs", "Chinese", "Italian", "Japanese", "Thai", "Mexican", "Indian", "French", "Lebanese"];
+
+var startAngle = 0;
+var arc;
+>>>>>>> 7d45a615c4e6bbb26fe06598c6a5abbb70bb5d19
 var spinTimeout = null;
 
 var spinArcStart = 10;
@@ -40,6 +47,7 @@ function getColor(item, maxitem) {
 
 // Create Roulette Wheel
 function drawRouletteWheel() {
+  arc = Math.PI / (restaurantOptions.length / 2);
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
     var outsideRadius = 145;
@@ -50,7 +58,7 @@ function drawRouletteWheel() {
     ctx.clearRect(0,0,500,500);
 
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1;
 
     ctx.font = 'bold 12px Helvetica, Arial';
 
@@ -118,9 +126,11 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  ctx.font = 'bold 30px Helvetica, Arial';
+  ctx.font = '15px Helvetica, Arial';
   var text = restaurantOptions[index]
-  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+  // Fills card below wheel with text and the restaurant picked on the wheel
+  $('#restaurantPick').append("You are eating here: " + text)
+  // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
 
@@ -131,5 +141,9 @@ function easeOut(t, b, c, d) {
   return b+c*(tc + -3*ts + 3*t);
 }
 
+<<<<<<< HEAD
 // move to app.js
 drawRouletteWheel();
+=======
+drawRouletteWheel();
+>>>>>>> 7d45a615c4e6bbb26fe06598c6a5abbb70bb5d19
