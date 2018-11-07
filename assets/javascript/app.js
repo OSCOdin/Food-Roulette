@@ -4,18 +4,19 @@ $(document).on('click', '#submit', function (e) {
 
     // Populate greeting section above spin button
     $('#greeting').append("Hello " + name + "." + " Click here to find out where you're eating: ");
+
 });
 
 // on click restaurant name populates container along with map image from google api
 // $(document).on('click', '#spin', function (e) {
 
-//     $('#restaurantPick').prepend('<h1>YOU ARE EATING HERE: " + </h1>');
-//     $('#details').prepend('<h3>Address / Rating / other info</h3>');
 //     $('#map').prepend('<img src="smiley.gif" alt="Smiley face" height="42" width="42">');
 // });
 
-// $('#restaurantPick').val("");
+// Empty restaurant picked / greeting / wheel
 // $('#details').val("");
+// $('#greeting').val("");
+// $('#canvas').val("");
 
 // yelp API
 const apiKey =
