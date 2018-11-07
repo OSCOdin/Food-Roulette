@@ -18,39 +18,6 @@ $(document).on('click', '#submit', function (e) {
 // $('#details').val("");
 
 // yelp API
-// var zipCode = $('#user-input').val();
-// const apiKey =
-//     'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
-// const yelpUrl = 'https://api.yelp.com/v3/businesses/search?location=${zipCode}';
-// const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
-// $.ajax({
-//     url: proxyUrl + yelpUrl,
-//     headers: {
-//         authorization: 'Bearer ' + apiKey
-//     }
-//     // drawRouletteWheel();
-// })
-//     .done(response => {
-//         console.log(response);
-//         // Constructing HTML containing the artist information
-//         //   var artistName = $("<h1>").text(response.name);
-//         //   var artistURL = $("<a>").attr("href", response.url).append(artistName);
-//         //   var artistImage = $("<img>").attr("src", response.thumb_url);
-//         //   var trackerCount = $("<h2>").text(response.tracker_count + " fans tracking this artist");
-//         //   var upcomingEvents = $("<h2>").text(response.upcoming_event_count + " upcoming events");
-//         //   var goToArtist = $("<a>").attr("href", response.url).text("See Tour Dates");
-
-//         //   // Empty the contents of the artist-div, append the new artist content
-//         //   $("#artist-div").empty();
-//         //   $("#artist-div").append(artistURL, artistImage, trackerCount, upcomingEvents, goToArtist);
-
-//     })
-//     .catch(error => {
-//         console.error(error);
-
-//     });
-
-
 const apiKey =
     'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
 const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=40.0580608&longitude=-75.5802112&distance=16093.4&limit=10';
@@ -71,28 +38,14 @@ $.ajax({
     }
     drawRouletteWheel();
 })
-    
+
     .catch(error => {
         console.error(error);
 
     });
 
+var yelpList = [];
 // Google API
-// var zipCode = $('#user-input').val();
-// const apiKey =
-//     'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
-// const yelpUrl = 'https://api.yelp.com/v3/businesses/search?location=${zipCode}';
-// const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
-// $.ajax({
-//     url: proxyUrl + yelpUrl,
-//     headers: {
-//         authorization: 'Bearer ' + apiKey
-//     }
-// })
-//     .catch(error => {
-//         console.error(error);
-
-//     });
 
 // Initialize Firebase
 var config = {
@@ -149,5 +102,3 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", functio
     $("#name-display").text(snapshot.val().name);
     $("#zip-display").text(snapshot.val().zip);
 });
-
-var yelpList = [];
