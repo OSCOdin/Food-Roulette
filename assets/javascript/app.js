@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-// take zip of user and pull yelp data into wheel
-$(document).on('click', '#submit', function (e) {
-    // append list of restaurants from yelp to restaurantOptions array
-
-});
-
-// on click restaurant name populates container along with map image from google api
-$(document).on('click', '#spin', function (e) {
-=======
 // take user name and zip and pull restaurants from yelp api and fill wheel
 $(document).on('click', '#submit', function (e) {
->>>>>>> 7d45a615c4e6bbb26fe06598c6a5abbb70bb5d19
     // append list of restaurants from yelp to restaurantOptions array
 
     // Populate greeting section above spin button
@@ -112,27 +101,4 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(5).on("child_added", functio
     // Change the HTML to reflect
     $("#name-display").text(snapshot.val().name);
     $("#zip-display").text(snapshot.val().zip);
-<<<<<<< HEAD
-    $("#cuisine-display").text(snapshot.val().cuisine);
 });
-
-// var yelpList = [];
-// var restaurantOptions = [];
-// var restaurantPick;
-// var rollStarted = false;
-
-// function resetRoll() {
-//     rollStarted = false;
-
-//     restaurantOptionIndex = Math.floor(Math.random() * (yelpList.length));
-
-//     for (var i = 0; i < possibleNames[currentNameIndex].length; i++) {
-
-//     }
-//     // document.getElementById.......
-
-//     // updateDisplay();
-// };
-=======
-});
->>>>>>> 7d45a615c4e6bbb26fe06598c6a5abbb70bb5d19
