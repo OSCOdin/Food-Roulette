@@ -1,4 +1,13 @@
 
+
+#map {
+    width: 50%;
+    height: 400px;
+    background-color: grey;
+}
+
+
+
 body {
     background: url("http://www.freepptbackgrounds.net/wp-content/uploads/2013/02/Mc-Donalds-Powerpoint-Backgrounds.jpg") center center no-repeat;
     background-size: cover;

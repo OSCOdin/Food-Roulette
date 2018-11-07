@@ -1,5 +1,4 @@
 // roulette wheel
-var restaurantOptions = [];
 
 var startAngle = 0;
 var arc;
