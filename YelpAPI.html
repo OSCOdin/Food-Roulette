@@ -24,29 +24,20 @@
 
     <div id="map"></div>
     <script>
+        //setting global variables to change later
         var pos = "";
-
-
-
-
         var lat1 = 0;
         var lon1 = 0;
-
-
-        // foodOptions = ["pizza", "chinese", "italian", "mexican", "thai", "burgers", "diners", "latin", "bbq", "pubs",
-        //     "american", "tradamerican", "newamerican", "indian", "breakfast", "breakfast_brunch", "steakhouse"
-        // ]
         var map, infoWindow;
 
+        // function to create map
         function initMap() {
-            // const location = YelpCall()
-            // // YelpCall();
-            // console.log(location)
+
             console.log(location1)
 
 
 
-
+            // actual map being created
             map = new google.maps.Map(
                 document.getElementById('map'), {
                     zoom: 10,
@@ -55,34 +46,37 @@
                         lng: 150.644
                     },
                 });
+            // creating markers for map
             var marker1 = new google.maps.Marker({
                 position: location1,
                 map: map
             })
+            // setting position of map
             map.setCenter(pos);
         }
         var location1 = null;
 
         function YelpCall() {
+            //event to ask for user location
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
+                    //getting location for google maps
                     pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
+                    // getting location for yelp
                     lat1 = position.coords.latitude;
                     lon1 = position.coords.longitude;
                     console.log(lat1, lon1)
 
-                    // infoWindow.setPosition(pos.lat);
-                    // infoWindow.setContent('Location found.');
-                    // infoWindow.open(map);
 
+                    //yelp api
                     const apiKey =
                         'gMIHJxXUTxTdI3_v6Rnzo7uD3wZQcQ4sYrppHS3xRRGQM7iRvtaCPunKOB1auZmzlxJG2cvpmhPNc2WPRaxux6DYqUKT15Cxu_U5pF9bsOe--uerTHBNZ-x3LvXYW3Yx';
                     const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&latitude=' +
                         lat1 + '&longitude=' + lon1 + '&limit=3';
-                    // const yelpUrl = 'https://api.yelp.com/v3/businesses/search?term=restaurants&location=${zipCode}&latitude&longitude';
+
                     const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
                     $.ajax({
                             async: false,
@@ -93,6 +87,7 @@
 
                         })
                         .done(response => {
+                            //catching yelps response to create markers
                             console.log(response)
                             latitude1 = response.businesses[1].coordinates.latitude;
                             longitude1 = response.businesses[1].coordinates.longitude;
@@ -100,11 +95,7 @@
                                 lat: latitude1,
                                 lng: longitude1
                             }
-                            console.log(location1)
-                            // response.businesses.forEach(function(businesses){
-                            //     console.log(businesses)
-
-                            // })
+                            //appending script tag to html as to call maps api
                             var googleTag = $(
                                 '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
                             )
@@ -114,11 +105,13 @@
                             console.error(error);
 
                         });
+
+                    //event handlers for location error
                 }, function () {
                     handleLocationError(true, infoWindow, map.getCenter());
                 });
             } else {
-                // Browser doesn't support Geolocation
+
                 handleLocationError(false, infoWindow, map.getCenter());
             }
 
@@ -136,6 +129,8 @@
             infoWindow.open(map);
         }
         console.log(lat1, lon1)
+
+        //calls yelp api to start function
         YelpCall()
     </script>
 
