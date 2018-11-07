@@ -131,5 +131,3 @@ function easeOut(t, b, c, d) {
   var tc = ts*t;
   return b+c*(tc + -3*ts + 3*t);
 }
-
-drawRouletteWheel();

@@ -2,8 +2,8 @@
 $(document).on('click', '#submit', function (e) {
     // append list of restaurants from yelp to restaurantOptions array
 
-    // Populate greeting section above spin button
-    $('#greeting').append("Hello " + name + "." + " Click here to find out where you're eating: ");
+    // Populate greeting section with spin button
+    $('#greeting').append("Hello " + name + "." + " Click here to find out where you're eating: " + '<input type="button" value="Spin!" id="spin" />');
 
 });
 
