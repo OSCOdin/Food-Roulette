@@ -3,36 +3,36 @@
 var startAngle = 0;
 var arc;
 var spinTimeout = null;
-
 var spinArcStart = 10;
 var spinTime = 0;
 var spinTimeTotal = 0;
-
 var ctx;
 
+// initiates spin animation
 document.getElementById("spin").addEventListener("click", spin);
+
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
-  return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
+  return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
 }
 
-function RGB2Color(r,g,b) {
-	return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
+function RGB2Color(r, g, b) {
+  return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
 
-// Creates color gradient / will remove
+// Creates color gradient through each arc
 function getColor(item, maxitem) {
   var phase = 0;
   var center = 128;
   var width = 127;
-  var frequency = Math.PI*2/maxitem;
-  
-  red   = Math.sin(frequency*item+2+phase) * width + center;
-  green = Math.sin(frequency*item+0+phase) * width + center;
-  blue  = Math.sin(frequency*item+4+phase) * width + center;
-  
-  return RGB2Color(red,green,blue);
+  var frequency = Math.PI * 2 / maxitem;
+
+  red = Math.sin(frequency * item + 2 + phase) * width + center;
+  green = Math.sin(frequency * item + 0 + phase) * width + center;
+  blue = Math.sin(frequency * item + 4 + phase) * width + center;
+
+  return RGB2Color(red, green, blue);
 }
 
 // Create Roulette Wheel
@@ -40,20 +40,20 @@ function drawRouletteWheel() {
   arc = Math.PI / (restaurantOptions.length / 2);
   var canvas = document.getElementById("canvas");
   if (canvas.getContext) {
-    var outsideRadius = 145;
-    var textRadius = 112;
-    var insideRadius = 62;
+    var outsideRadius = 240;
+    var textRadius = 135;
+    var insideRadius = 29;
 
     ctx = canvas.getContext("2d");
-    ctx.clearRect(0,0,500,500);
+    ctx.clearRect(500, 500, 500, 500);
 
+    // styles text in each arc
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 2;
+    ctx.font = 'bold 14px Lato';
 
-    ctx.font = 'bold 12px Helvetica, Arial';
-
-    // fill sections with options
-    for(var i = 0; i < restaurantOptions.length; i++) {
+    // fill sections with restaurantOptions
+    for (var i = 0; i < restaurantOptions.length; i++) {
       var angle = startAngle + i * arc;
       ctx.fillStyle = getColor(i, restaurantOptions.length);
 
@@ -65,13 +65,13 @@ function drawRouletteWheel() {
 
       ctx.save();
       ctx.fillStyle = "black";
-      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
-                    250 + Math.sin(angle + arc / 2) * textRadius);
-      ctx.rotate(angle + arc / 2 + Math.PI / 2);
+      ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius,
+        250 + Math.sin(angle + arc / 2) * textRadius);
+      ctx.rotate(angle + arc / 2 + Math.PI / 150);
       var text = restaurantOptions[i];
       ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
       ctx.restore();
-    } 
+    }
 
     //Arrow
     ctx.fillStyle = "Black";
@@ -90,16 +90,18 @@ function drawRouletteWheel() {
 
 // spin rotation time is randomized
 function spin() {
+  $("#details").empty();
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 3000;
   rotateWheel();
+
 }
 
 // rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
 function rotateWheel() {
   spinTime += 40;
-  if(spinTime >= spinTimeTotal) {
+  if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
     return;
   }
@@ -116,17 +118,26 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  ctx.font = '15px Helvetica, Arial';
-  var text = restaurantOptions[index]
-  // Fills card below wheel with text and the restaurant picked on the wheel
-  $('#details').append("You are eating here: " + text)
-  // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+  ctx.font = '15px lato';
+  var text = restaurantOptions[index];
+  var textURL = restaurantUrl[index];
+  // Appends picked restaurant into text div
+  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
+  $('#details').append('<h2>' + "Check us out on Yelp: " + textURL + '!' + '</h2>');
   ctx.restore();
+  //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
+  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')
+  $("body").append(locationTag);
+
+  var googleTag = $(
+    '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
+  )
+  $("body").append(googleTag);
 }
 
 // slows down rotation of wheel smoothly
 function easeOut(t, b, c, d) {
-  var ts = (t/=d)*t;
-  var tc = ts*t;
-  return b+c*(tc + -3*ts + 3*t);
+  var ts = (t /= d) * t;
+  var tc = ts * t;
+  return b + c * (tc + -3 * ts + 3 * t);
 }
