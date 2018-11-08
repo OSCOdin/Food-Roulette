@@ -116,7 +116,7 @@ function stopRotateWheel() {
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
-  ctx.font = '15px Helvetica, Arial';
+  ctx.font = '15px lato';
   var text = restaurantOptions[index]
   // var textLoc = restaurantCoord[index]
   // Fills card below wheel with text and the restaurant picked on the wheel
