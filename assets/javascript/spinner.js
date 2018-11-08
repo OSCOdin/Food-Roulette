@@ -91,6 +91,7 @@ function drawRouletteWheel() {
 
 // spin rotation time is randomized
 function spin() {
+  $("#details").empty();
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 3000;
@@ -118,12 +119,28 @@ function stopRotateWheel() {
   var index = Math.floor((360 - degrees % 360) / arcd);
   ctx.save();
   ctx.font = '15px lato';
-  var text = restaurantOptions[index]
+  var text = restaurantOptions[index];
+  var textLoc = restaurantCoord[index];
   // Appends picked restaurant into text div
   $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
   // $('#details').append('<h3>' + "You are eating here:  " + textLoc + '</h3>')
   ctx.restore();
+  var locationTag = $('<script> setCords(' + textLoc +') </script>')
+  $("body").append(locationTag);
+
+  //appending script tag to html as to call maps api
+  var googleTag = $(
+    '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uq660sOqIWpWFdN6tGwKUYR07jmx-Ww&callback=initMap">'
+)
+$("body").append(googleTag);
 }
+
+// function removeElement(newArr){
+//   newArr.pop();
+// }
+// removeElement(text);
+// text.shift();
+// text.pop();
 
 // slows down rotation of wheel smoothly
 function easeOut(t, b, c, d) {
