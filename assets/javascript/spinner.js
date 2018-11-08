@@ -120,6 +120,7 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = '15px lato';
   var text = restaurantOptions[index];
+  var textLoc = restaurantCoord[index];
   var textURL = restaurantUrl[index];
   // Appends picked restaurant into text div
   $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')

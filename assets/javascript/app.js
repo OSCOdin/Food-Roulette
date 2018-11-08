@@ -3,6 +3,10 @@ var zip;
 var restaurantOptions = [];
 var restaurantCoord = [];
 var restaurantUrl = [];
+var name;
+var zip;
+var restaurantOptions = [];
+var restaurantCoord = [];
 var latitude1 = 0;
 var longitude1 = 0;
 
