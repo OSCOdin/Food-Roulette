@@ -10,6 +10,7 @@ var spinTimeTotal = 0;
 
 var ctx;
 
+// initiates spin animation
 document.getElementById("spin").addEventListener("click", spin);
 // $('#details').val("");
 function byte2Hex(n) {
@@ -21,7 +22,7 @@ function RGB2Color(r, g, b) {
   return '#' + byte2Hex(r) + byte2Hex(g) + byte2Hex(b);
 }
 
-// Creates color gradient / will remove
+// Creates color gradient through each arc
 function getColor(item, maxitem) {
   var phase = 0;
   var center = 128;
@@ -118,12 +119,9 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = '15px lato';
   var text = restaurantOptions[index]
-  // var textLoc = restaurantCoord[index]
-  // Fills card below wheel with text and the restaurant picked on the wheel
+  // Appends picked restaurant into text div
   $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
   // $('#details').append('<h3>' + "You are eating here:  " + textLoc + '</h3>')
-
-  // ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
 }
 

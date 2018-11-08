@@ -5,11 +5,6 @@ var restaurantCoord = [];
 latitude1 = [];
 longitude1 = [];
 
-// Empty restaurant picked / greeting / wheel
-// $('#details').val("");
-// $('#greeting').val("");
-// $('#canvas').val("");
-
 //setting global variables to change later
 var pos = "";
 var lat1 = 0;
