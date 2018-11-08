@@ -43,15 +43,15 @@ function drawRouletteWheel() {
   if (canvas.getContext) {
     var outsideRadius = 240;
     var textRadius = 135;
-    var insideRadius = 35;
+    var insideRadius = 29;
 
     ctx = canvas.getContext("2d");
     ctx.clearRect(500, 500, 500, 500);
 
     // styles text in each arc
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 0;
-    ctx.font = 'bold 12px Lato';
+    ctx.lineWidth = 2;
+    ctx.font = 'bold 14px Lato';
 
     // fill sections with restaurantOptions
     for (var i = 0; i < restaurantOptions.length; i++) {
