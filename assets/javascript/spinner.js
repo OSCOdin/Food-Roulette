@@ -48,10 +48,10 @@ function drawRouletteWheel() {
     ctx = canvas.getContext("2d");
     ctx.clearRect(500, 500, 500, 500);
 
+    // styles text in each arc
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 1;
-
-    ctx.font = 'bold 12px Helvetica, Arial';
+    ctx.lineWidth = 0;
+    ctx.font = 'bold 12px Lato';
 
     // fill sections with restaurantOptions
     for (var i = 0; i < restaurantOptions.length; i++) {
