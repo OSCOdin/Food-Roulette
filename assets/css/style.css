@@ -42,6 +42,10 @@ h4{
     border-radius: 5px;
 }
 
+#spin:hover {
+    cursor: pointer;
+}
+
 #foodWheel{
     color:beige;  
 }
@@ -79,7 +83,8 @@ h4{
 
 #map {
     width: 100%;
-    height: 400px;
+    height: 520px;
     background-color: darkgray;
     border-radius: 5px;
+    margin-right: 15%;
 }
