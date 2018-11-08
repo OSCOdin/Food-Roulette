@@ -120,10 +120,11 @@ function stopRotateWheel() {
   ctx.save();
   ctx.font = '15px lato';
   var text = restaurantOptions[index];
+  var textLoc = restaurantCoord[index];
   var textURL = restaurantUrl[index];
   // Appends picked restaurant into text div
-  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
-  $('#details').append('<h2>' + "Check us out on Yelp: " + textURL + '!' + '</h2>');
+  $('#details').append('<h2>' + "The Wheel Has Chosen : " + text + '</h2>')
+  $('#details').append('<h4>' + "For more information : " + textURL + '!' + '</h4>');
   ctx.restore();
   //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
   var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')
