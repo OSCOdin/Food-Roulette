@@ -48,7 +48,7 @@ function drawRouletteWheel() {
     // styles text in each arc
     ctx.strokeStyle = "black";
     ctx.lineWidth = 2;
-    ctx.font = ' 13px Lato';
+    ctx.font = '13px Lato';
 
     // fill sections with restaurantOptions
     for (var i = 0; i < restaurantOptions.length; i++) {
