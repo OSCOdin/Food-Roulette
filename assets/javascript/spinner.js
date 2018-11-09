@@ -46,7 +46,7 @@ function drawRouletteWheel() {
     var insideRadius = 29;
 
     ctx = canvas.getContext("2d");
-    ctx.clearRect(500, 500, 500, 500);
+    ctx.clearRect(0, 0, 500, 500);
 
     // styles text in each arc
     ctx.strokeStyle = "black";
