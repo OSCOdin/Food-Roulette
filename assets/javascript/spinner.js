@@ -123,7 +123,7 @@ function stopRotateWheel() {
   // Appends picked restaurant into text div
   $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>');
 
-  var yelpLink=$('<a target="_blank">Check us on Yelp!</a>').attr('href',textUrl);
+  var yelpLink = $('<a target="_blank">Check us on Yelp!</a>').attr('href', textUrl);
   $('#details').append(yelpLink);
   ctx.restore();
 

@@ -24,7 +24,7 @@ function initMap() {
     var map = new google.maps.Map(
         document.getElementById('map'), {
             center: resturantLocation,
-            zoom: 15, 
+            zoom: 15,
         });
     // creating markers for map
     var marker1 = new google.maps.Marker({
@@ -57,21 +57,21 @@ function YelpCall() {
                 lat1 + '&longitude=' + lon1 + '&limit=9';
             const proxyUrl = 'https://shielded-hamlet-43668.herokuapp.com/';
             $.ajax({
-                    async: false,
-                    url: proxyUrl + yelpUrl,
-                    method: 'GET',
-                    headers: {
-                        authorization: 'Bearer ' + apiKey
-                    }
-                }).then(function (response) {
-                    for (let i = 0; i < response.businesses.length; i++) {
-                        restaurantOptions.push(response.businesses[i].name);
-                        restaurantCoord.push(response.businesses[i].coordinates);
-                        restaurantUrl.push(response.businesses[i].url);
-                        drawRouletteWheel();
+                async: false,
+                url: proxyUrl + yelpUrl,
+                method: 'GET',
+                headers: {
+                    authorization: 'Bearer ' + apiKey
+                }
+            }).then(function (response) {
+                for (let i = 0; i < response.businesses.length; i++) {
+                    restaurantOptions.push(response.businesses[i].name);
+                    restaurantCoord.push(response.businesses[i].coordinates);
+                    restaurantUrl.push(response.businesses[i].url);
+                    drawRouletteWheel();
 
-                    }
-                })
+                }
+            })
                 .catch(error => {
                     console.error(error);
                 });
