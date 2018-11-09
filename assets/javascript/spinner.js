@@ -1,5 +1,4 @@
 // roulette wheel
-
 var startAngle = 0;
 var arc;
 var spinTimeout = null;
@@ -94,13 +93,10 @@ function spin() {
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 3000;
   rotateWheel();
-
 }
 
 // rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
 function rotateWheel() {
-  // use for testing
-  // spinTime += 100;
   spinTime += 40;
   if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
@@ -123,16 +119,15 @@ function stopRotateWheel() {
   var text = restaurantOptions[index];
   var textLoc = restaurantCoord[index];
   var textUrl = restaurantUrl[index];
+
   // Appends picked restaurant into text div
-  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
-  // $('#details').append('<a>').attr('href', textUrl)
-  
+  $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>');
+
   var yelpLink=$('<a target="_blank">Check us on Yelp!</a>').attr('href',textUrl);
   $('#details').append(yelpLink);
   ctx.restore();
-  
-  //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
-  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')
+
+  var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>');
   $("body").append(locationTag);
 
   var googleTag = $(
