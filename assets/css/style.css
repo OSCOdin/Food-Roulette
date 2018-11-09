@@ -7,7 +7,6 @@ body {
 
 h1,
 h2 {
-    
     font-family: 'Spicy Rice', cursive;
 }
 
@@ -36,10 +35,13 @@ h4{
     padding: 10px 20px;
     font-weight: bold;
     font-size: 20px;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Poor Story', cursive;
     color: black;
     background-color: beige;
     border-radius: 5px;
+}
+#spin:hover, a:hover{
+    cursor: pointer;
 }
 
 #foodWheel{
@@ -62,14 +64,21 @@ h4{
 
 
 #details{
-    background-color: beige;
+    background-color: transparent;
     font-family: 'Lato', sans-serif;
-    opacity: 0.7;
     font-family: 'Poor Story', cursive;
-    border-radius: 5px;
+    border-color: transparent;
+    color: beige;
+    text-shadow: black 2px solid;
 }
 
- 
+a {
+    font-family: 'Spicy Rice', cursive; 
+    font-size: 24px;
+    color: lightblue;
+    text-decoration: none;
+}
+
 #wheel{
     align-content: center;    
     height: 1000px;
@@ -79,7 +88,7 @@ h4{
 
 #map {
     width: 100%;
-    height: 400px;
-    background-color: darkgray;
+    height: 920px;
+    background-color: transparent;
     border-radius: 5px;
 }
