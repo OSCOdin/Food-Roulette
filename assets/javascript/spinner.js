@@ -11,7 +11,6 @@ var ctx;
 // initiates spin animation
 document.getElementById("spin").addEventListener("click", spin);
 
-
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
   return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
@@ -24,7 +23,7 @@ function RGB2Color(r, g, b) {
 // Creates color gradient through each arc
 function getColor(item, maxitem) {
   var phase = 0;
-  var center = 128;
+  var center = 127;
   var width = 127;
   var frequency = Math.PI * 2 / maxitem;
 
@@ -100,6 +99,8 @@ function spin() {
 
 // rotates wheel and stops wheel rotation if spin time is greater or = to total spin time
 function rotateWheel() {
+  // use for testing
+  // spinTime += 100;
   spinTime += 40;
   if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
@@ -121,11 +122,15 @@ function stopRotateWheel() {
   ctx.font = '15px lato';
   var text = restaurantOptions[index];
   var textLoc = restaurantCoord[index];
-  var textURL = restaurantUrl[index];
+  var textUrl = restaurantUrl[index];
   // Appends picked restaurant into text div
   $('#details').append('<h2>' + "The Wheel Has Chosen:  " + text + '</h2>')
-  $('#details').append('<h2>' + "Check us out on Yelp: " + textURL + '!' + '</h2>');
+  // $('#details').append('<a>').attr('href', textUrl)
+  
+  var yelpLink=$('<a target="_blank">Check us on Yelp!</a>').attr('href',textUrl);
+  $('#details').append(yelpLink);
   ctx.restore();
+  
   //AP: Use JSON.stringyfy to properly parse the textLoc object; previuosly it was not being parsed correctly and marker wasn't being set properly
   var locationTag = $('<script> setCords(' + JSON.stringify(textLoc) + ') </script>')
   $("body").append(locationTag);
