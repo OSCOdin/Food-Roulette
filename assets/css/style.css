@@ -5,6 +5,53 @@ body {
     height: 100%;
   }
 
+ /* header */
+  
+ #masthead {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    margin-left: -8px;
+    margin-top: -10px;
+    overflow: auto;
+    color: #fff;
+    background: rgba(102, 102, 102, 0.836);
+    border-bottom: 5px solid beige;
+ }
+  
+  nav {
+    float: left;
+    margin-top: 35px;
+    margin-bottom: 25px;
+  }
+  
+  nav a {
+    display: inline-block;
+    padding-left: 10px;
+    margin-left: 10px;
+    line-height: 18px;
+    font-size: 16px;
+    color:  beige;
+    text-decoration: none;
+    border-left: 1px solid beige;
+    border-bottom: 3px solid transparent;
+  }
+  
+  nav a:first-child {
+    border-left: 0 none;
+  }
+
+  nav a:hover {
+    color: beige;
+    font-weight: 500;
+    border-bottom: 3px solid beige;
+  }
+
+  nav a:active {
+    border-bottom: 3px solid beige;
+  }
+
+/* general */
 h1,
 h2 {
     font-family: 'Spicy Rice', cursive;
@@ -25,7 +72,8 @@ h4{
 
 #content-title{
     color:beige;
-    margin-top: 20px;
+    margin-top: 80px;
+    margin-left: 80px;
 }
 
 /* spin button */
