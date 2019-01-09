@@ -1,104 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Food Roulette</title>
+    <!-- boostrap -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
     <!-- Compressed CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/css/foundation.min.css"
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/css/foundation.min.css"
         integrity="sha256-VEEaOnBKVRoYPn4AID/tY/XKVxKEqXstoo/xZ6nemak= sha384-D46t32f421/hB30qwnim2pIcisNN5GU9+6m2Mfnd3dKpTSFidZLa08/1StEiCFId sha512-WkgzH8VKemDfwrp18r+wgbx+oHXOkfd2kJs7ocAXdGDgonXDXh88E90IRtRZRXtO0IHprxYHYlY14h+wyTsUDA=="
-        crossorigin="anonymous">
+        crossorigin="anonymous"> -->
 
     <!-- Compressed JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/js/foundation.min.js" integrity="sha256-GZq6aeugpWo25iH//1eKmeK6FHCf+6KXTfoUpkCqPCA= sha384-vjxUQtbGw5FJMigaaFpXYyxoHHLb7LbvRywnMZOiPJeh5j9sl2rnmQ3iucuegRm8 sha512-h7tIMIX/opZXfWkcTDbkO+nT0LePyAAwDacfYhWtgGUidV+Kkh3eesW52fPSxKEsw3rgywKhQvghNLT4eDuUyw=="
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0/dist/js/foundation.min.js"
+      integrity="sha256-GZq6aeugpWo25iH//1eKmeK6FHCf+6KXTfoUpkCqPCA= sha384-vjxUQtbGw5FJMigaaFpXYyxoHHLb7LbvRywnMZOiPJeh5j9sl2rnmQ3iucuegRm8 sha512-h7tIMIX/opZXfWkcTDbkO+nT0LePyAAwDacfYhWtgGUidV+Kkh3eesW52fPSxKEsw3rgywKhQvghNLT4eDuUyw=="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Link to stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Lato|Poor+Story|Spicy+Rice" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato|Poor+Story|Spicy+Rice"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
-
-    <header id="masthead">
-        <div class="container">
-            <nav>
-                <a href="#home">Home</a>
-                <a href="#restaurantInfo">Restaurant Info</a>
-                <a href="#maplink">Map</a>
-                <!-- <a href="#top">top</a> -->
-            </nav>
-        </div>
-    </header>
+  <body>
+    <!-- <header id="masthead">
+      <div class="container">
+        <nav>
+          <a href="#home">Home</a>
+          <a href="#restaurantInfo">Restaurant Info</a>
+          <a href="#maplink">Map</a>
+        </nav>
+      </div>
+    </header> -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Ravenous Roulette</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#restaurantInfo">Restaurant Info</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#maplink">Map</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Content Area Setup -->
     <div class="grid-container" id="content">
-        <!-- Headline -->
-        <div class="grid-x grid-margin-x">
-            <div class="cell small-3"></div>
-            <a id="home">
-                <div class="cell small-6" id="content-title">
-                    <h1>Ravenous Roulette</h1>
-                </div>
-            </a>
-            <div class="cell small-3"></div>
-        </div>
-        <div class="grid-x grid-margin-x">
-            <div class="cell small-3"></div>
-            <div class="cell small-6" id="interactive">
-                <!-- Input area and submit/search button -->
-                <div class="middle-content-section float-center">
-                    <h4>Where Will You Dine Tonight?</h4>
-                    <div class="input-group input-group-rounded float-center">
-                    </div>
-                </div>
-            </div>
-        </div>
+      <!-- Headline -->
+      <div class="grid-x grid-margin-x">
         <div class="cell small-3"></div>
+        <a id="home">
+          <div class="cell small-6" id="content-title">
+            <h1>Ravenous Roulette</h1>
+          </div>
+        </a>
+        <div class="cell small-3"></div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="cell small-3"></div>
+        <div class="cell small-6" id="interactive">
+          <!-- Input area and submit/search button -->
+          <div class="middle-content-section float-center">
+            <h4>Where Will You Dine Tonight?</h4>
+            <div class="input-group input-group-rounded float-center"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cell small-3"></div>
     </div>
     <!-- choice -->
     <div class="grid-x grid-margin-x">
-        <div class="cell small-12 text-center" id="foodWheel">
-            <h2 id="greeting"></h2>
-            <input type="button" value="SPIN!" id='spin' />
-            <!-- Roulette Wheel -->
-            <div class="wheel">
-                <canvas id="canvas" width="500" height="500"></canvas>
-            </div>
+      <div class="cell small-12 text-center" id="foodWheel">
+        <h2 id="greeting"></h2>
+        <input type="button" value="SPIN!" id="spin" />
+        <!-- Roulette Wheel -->
+        <div class="wheel">
+          <canvas id="canvas" width="500" height="500"></canvas>
         </div>
+      </div>
     </div>
     <!-- details -->
     <div class="grid-x grid-margin-x">
-        <div class="cell small-3"></div>
-        <div class="cell small-6">
-            <a id="restaurantInfo">
-                <div class="callout warning text-center" id="details">
-                </div>
-            </a>
-        </div>
-        <div class="cell small-3"></div>
+      <div class="cell small-3"></div>
+      <div class="cell small-6">
+        <a id="restaurantInfo">
+          <div class="callout warning text-center" id="details"></div>
+        </a>
+      </div>
+      <div class="cell small-3"></div>
     </div>
     <div class="grid-x grid-margin-x">
-        <div class="cell small-3"></div>
-        <div class="cell small-12">
-            <a id="maplink">
-                <div id="map"></div>
-            </a>
-        </div>
-        <div class="cell small-3"></div>
+      <div class="cell small-3"></div>
+      <div class="cell small-12">
+        <a id="maplink"> <div id="map"></div> </a>
+      </div>
+      <div class="cell small-3"></div>
     </div>
-
-
-</body>
-<!-- jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- JavaScript -->
-<script type="text/javascript" src="assets/javascript/app.js"></script>
-<script type="text/javascript" src="assets/javascript/spinner.js"></script>
-
+  </body>
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <script type="text/javascript" src="assets/javascript/spinner.js"></script>
 </html>
